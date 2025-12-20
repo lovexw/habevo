@@ -1,18 +1,22 @@
 :root {
-  color-scheme: dark;
-  --bg: #070a12;
-  --bg-2: #0b1020;
-  --fg: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.66);
-  --line: rgba(255, 255, 255, 0.1);
+  color-scheme: light;
+  --bg: #f5f5f5;
+  --bg-2: #ffffff;
+  --fg: #1a1a1a;
+  --muted: rgba(26, 26, 26, 0.68);
+  --line: rgba(0, 0, 0, 0.08);
 
-  --card: rgba(255, 255, 255, 0.05);
-  --card-strong: rgba(255, 255, 255, 0.07);
-  --shadow: 0 16px 60px rgba(0, 0, 0, 0.55);
+  --card: rgba(255, 255, 255, 0.95);
+  --card-strong: rgba(255, 255, 255, 0.98);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 
-  --accent: #78a6ff;
-  --accent-2: #8cffd1;
-  --accent-3: #f7b8ff;
+  --accent: #3b82f6;
+  --accent-2: #10b981;
+  --accent-3: #f59e0b;
+
+  --health: #10b981;
+  --ai: #6366f1;
+  --bitcoin: #f97316;
 
   --radius: 18px;
   --radius-sm: 14px;
@@ -37,10 +41,9 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(1200px 800px at 20% -10%, rgba(120, 166, 255, 0.22), transparent 60%),
-    radial-gradient(900px 700px at 80% 10%, rgba(140, 255, 209, 0.14), transparent 55%),
-    radial-gradient(1000px 800px at 60% 80%, rgba(247, 184, 255, 0.12), transparent 60%),
-    linear-gradient(180deg, var(--bg), var(--bg-2));
+  background: linear-gradient(180deg, var(--bg), var(--bg-2) 50%),
+    radial-gradient(600px 400px at 20% 30%, rgba(16, 185, 129, 0.06), transparent 50%),
+    radial-gradient(500px 350px at 80% 70%, rgba(99, 102, 241, 0.05), transparent 50%);
   color: var(--fg);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
@@ -64,8 +67,9 @@ strong {
   left: -999px;
   top: -999px;
   padding: 10px 12px;
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   z-index: 9999;
 }
@@ -89,8 +93,8 @@ strong {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(7, 10, 18, 0.65);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(245, 245, 245, 0.8);
+  border-bottom: 1px solid var(--line);
 }
 
 .header-inner {
@@ -111,8 +115,8 @@ strong {
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(120, 166, 255, 0.95), rgba(140, 255, 209, 0.95));
-  box-shadow: 0 10px 34px rgba(120, 166, 255, 0.2);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
 }
 
 .brand-text {
@@ -130,25 +134,27 @@ strong {
 .site-nav a {
   padding: 8px 10px;
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(26, 26, 26, 0.75);
   font-weight: 520;
   font-size: var(--step--1);
+  transition: all 0.2s;
 }
 
 .site-nav a:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.92);
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--accent);
 }
 
 .nav-cta {
-  background: rgba(120, 166, 255, 0.14);
-  border: 1px solid rgba(120, 166, 255, 0.35);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--accent);
 }
 
 .nav-toggle {
   display: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.04);
   border-radius: 14px;
   padding: 10px;
   cursor: pointer;
@@ -158,7 +164,7 @@ strong {
   display: block;
   width: 22px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.84);
+  background: var(--fg);
   border-radius: 2px;
 }
 
@@ -178,11 +184,12 @@ strong {
 }
 
 .kicker {
-  color: rgba(140, 255, 209, 0.9);
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.26em;
   font-size: 0.82rem;
   margin: 0 0 12px;
+  font-weight: 600;
 }
 
 .hero h1 {
@@ -190,11 +197,15 @@ strong {
   font-size: var(--step-3);
   line-height: 1.08;
   letter-spacing: -0.02em;
+  background: linear-gradient(120deg, var(--accent), var(--ai), var(--bitcoin));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .lead {
   margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--muted);
   font-size: var(--step-1);
   max-width: 62ch;
 }
@@ -212,20 +223,28 @@ strong {
   justify-content: center;
   padding: 12px 16px;
   border-radius: 14px;
-  border: 1px solid rgba(120, 166, 255, 0.35);
-  background: linear-gradient(135deg, rgba(120, 166, 255, 0.24), rgba(140, 255, 209, 0.14));
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.08));
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.12);
   font-weight: 640;
   letter-spacing: 0.02em;
+  color: var(--fg);
+  transition: all 0.2s;
 }
 
 .button:hover {
-  border-color: rgba(140, 255, 209, 0.5);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.12));
 }
 
 .button-ghost {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.button-ghost:hover {
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .hero-metrics {
@@ -235,8 +254,8 @@ strong {
   margin: 28px 0 0;
   padding: 14px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
 }
 
 .hero-metrics dt {
@@ -256,20 +275,18 @@ strong {
   height: 420px;
   border-radius: 28px;
   overflow: hidden;
-  background: radial-gradient(300px 240px at 30% 30%, rgba(120, 166, 255, 0.26), transparent 60%),
-    radial-gradient(320px 250px at 75% 25%, rgba(140, 255, 209, 0.18), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
 
 .grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 48px 48px;
-  opacity: 0.22;
+  opacity: 0.4;
   transform: perspective(900px) rotateX(60deg) translateY(70px);
   transform-origin: top;
 }
@@ -280,26 +297,26 @@ strong {
   height: 280px;
   border-radius: 999px;
   filter: blur(14px);
-  opacity: 0.7;
-  mix-blend-mode: screen;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
 }
 
 .orb-a {
   left: -70px;
   top: -80px;
-  background: radial-gradient(circle at 30% 30%, rgba(120, 166, 255, 0.9), transparent 55%);
+  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.3), transparent 55%);
 }
 
 .orb-b {
   right: -90px;
   top: 40px;
-  background: radial-gradient(circle at 30% 30%, rgba(140, 255, 209, 0.92), transparent 58%);
+  background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.25), transparent 58%);
 }
 
 .orb-c {
   left: 40px;
   bottom: -120px;
-  background: radial-gradient(circle at 30% 30%, rgba(247, 184, 255, 0.86), transparent 58%);
+  background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.2), transparent 58%);
 }
 
 .section {
@@ -314,6 +331,7 @@ strong {
   margin: 0;
   font-size: var(--step-2);
   letter-spacing: -0.02em;
+  color: var(--fg);
 }
 
 .section-head p {
@@ -336,25 +354,33 @@ strong {
 }
 
 .card {
-  background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 20px;
-  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 .card h3 {
   margin: 0 0 10px;
   letter-spacing: -0.01em;
+  color: var(--fg);
 }
 
 .card h4 {
   margin: 0 0 8px;
+  color: var(--fg);
 }
 
 .card p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
 }
 
 .card p + p {
@@ -363,7 +389,34 @@ strong {
 
 .card.compact {
   padding: 18px;
-  background: linear-gradient(180deg, var(--card-strong), rgba(255, 255, 255, 0.02));
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.card-health {
+  border-top: 3px solid var(--health);
+}
+
+.card-health:hover {
+  border-top-color: var(--health);
+  box-shadow: 0 8px 28px rgba(16, 185, 129, 0.12);
+}
+
+.card-ai {
+  border-top: 3px solid var(--ai);
+}
+
+.card-ai:hover {
+  border-top-color: var(--ai);
+  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.12);
+}
+
+.card-bitcoin {
+  border-top: 3px solid var(--bitcoin);
+}
+
+.card-bitcoin:hover {
+  border-top-color: var(--bitcoin);
+  box-shadow: 0 8px 28px rgba(249, 115, 22, 0.12);
 }
 
 .tag {
@@ -373,14 +426,27 @@ strong {
   font-size: 0.78rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(26, 26, 26, 0.7);
   margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.tag-health {
+  color: var(--health);
+}
+
+.tag-ai {
+  color: var(--ai);
+}
+
+.tag-bitcoin {
+  color: var(--bitcoin);
 }
 
 .bullets {
   margin: 14px 0 0;
   padding-left: 18px;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--muted);
 }
 
 .bullets li {
@@ -391,33 +457,35 @@ strong {
   margin-top: 18px;
   padding: 18px 20px;
   border-radius: var(--radius);
-  border: 1px solid rgba(140, 255, 209, 0.22);
-  background: radial-gradient(800px 240px at 20% 20%, rgba(140, 255, 209, 0.12), transparent 55%),
-    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.02));
 }
 
 .callout-title {
   margin: 0;
-  color: rgba(140, 255, 209, 0.86);
+  color: var(--health);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .callout p {
   margin: 10px 0 0;
+  color: var(--fg);
 }
 
 .flywheel {
   margin-top: 18px;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.6);
   padding: 20px;
 }
 
 .flywheel h3 {
   margin: 0 0 12px;
+  color: var(--fg);
 }
 
 .flywheel-grid {
@@ -431,13 +499,14 @@ strong {
   grid-column: span 1;
   padding: 14px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .node-title {
   margin: 0;
   font-weight: 700;
+  color: var(--fg);
 }
 
 .node-body {
@@ -448,7 +517,7 @@ strong {
 
 .flywheel-arrow {
   text-align: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   font-size: 1.1rem;
 }
 
@@ -464,12 +533,13 @@ strong {
 }
 
 .pill {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.08);
   border-radius: 999px;
   padding: 8px 10px;
   font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--accent);
+  font-weight: 550;
 }
 
 .principles {
@@ -478,13 +548,14 @@ strong {
 
 .principles h3 {
   margin: 0 0 12px;
+  color: var(--fg);
 }
 
 .timeline {
   list-style: none;
   padding: 0;
   margin: 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 2px solid var(--accent);
 }
 
 .timeline-item {
@@ -498,38 +569,42 @@ strong {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: rgba(120, 166, 255, 0.9);
+  background: var(--accent);
   margin-left: -6px;
   margin-top: 6px;
-  box-shadow: 0 0 0 5px rgba(120, 166, 255, 0.12);
+  box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.1);
 }
 
 .timeline-time {
   margin: 0;
-  color: rgba(140, 255, 209, 0.78);
+  color: var(--accent);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .timeline-content h3 {
   margin: 8px 0 6px;
+  color: var(--fg);
 }
 
 .note {
   margin-top: 14px;
   padding: 14px 16px;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .text-link {
-  color: rgba(120, 166, 255, 0.95);
+  color: var(--accent);
+  font-weight: 550;
+  transition: all 0.2s;
 }
 
 .text-link:hover {
-  color: rgba(140, 255, 209, 0.95);
+  color: var(--ai);
 }
 
 .contact {
@@ -540,9 +615,15 @@ strong {
 
 .contact-card {
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.6);
   padding: 18px;
+  transition: all 0.3s;
+}
+
+.contact-card:hover {
+  background: var(--card-strong);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .contact-label {
@@ -551,17 +632,19 @@ strong {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .contact-value {
   margin: 10px 0 0;
   font-weight: 650;
+  color: var(--fg);
 }
 
 .site-footer {
   padding: 28px 0 48px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.18);
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .footer-inner {
@@ -576,6 +659,7 @@ strong {
   margin: 0;
   font-weight: 740;
   letter-spacing: 0.18em;
+  color: var(--fg);
 }
 
 @media (max-width: 920px) {
@@ -626,8 +710,8 @@ strong {
     padding: 14px;
     flex-direction: column;
     gap: 8px;
-    background: rgba(7, 10, 18, 0.86);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(245, 245, 245, 0.95);
+    border-bottom: 1px solid var(--line);
   }
 
   .site-nav.is-open {
