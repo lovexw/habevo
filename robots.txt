@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://habevo.com/sitemap.xml
+Sitemap: https://habfut.com/sitemap.xml
